@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext .ts,.tsx",
     "preview": "vite preview",
-    "format:fix": "prettier --write .",
+    "fix": "prettier --write .",
     "precommit": "lint-staged",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
