@@ -1,5 +1,6 @@
-import FormNot from '../../components/FormNot/FormNot';
+// import FormNot from '../../components/FormNot/FormNot';
 import LinkToHome from '../../components/LinkToHome/LinkToHome';
+import NewFormUn from '../../components/NewForm/NewFormUn';
 import style from './FormUN.module.css';
 
 function FormUN() {
@@ -10,7 +11,7 @@ function FormUN() {
           <h3 className={style.text}>FormUN</h3>
         </div>
         <div>
-          <FormNot />
+          <NewFormUn />
         </div>
         <LinkToHome />
       </div>

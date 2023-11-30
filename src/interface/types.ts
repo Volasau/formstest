@@ -9,3 +9,15 @@ export interface AddImageAction {
 }
 
 export type AppAction = AddImageAction;
+
+export interface UIDataForm {
+  name: string;
+  age: number;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  gender: 'male' | 'female';
+  acceptTerms: boolean;
+  image: string;
+  country: string;
+}
