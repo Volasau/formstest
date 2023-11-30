@@ -1,17 +1,15 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/pages/Home/Home';
-import FormUN from './components/FormUn/FormUn';
-import FormHook from './components/FormHook/FormHook';
-import Error from './components/pages/Error/Error';
-// import style from './App.module.css';
+import Home from './pages/Home/Home';
+import Error from './pages/Error/Error';
+import FormHook from './pages/FormHook/FormHook';
+import FormUN from './pages/FormUn/FormUn';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/formhook" element={<FormHook />} />
       <Route path="/formun" element={<FormUN />} />
-      <Route path="/formhok" element={<FormHook />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );

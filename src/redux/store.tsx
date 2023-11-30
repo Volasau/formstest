@@ -1,9 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 const store = configureStore({
-  reducer: {
-    // ваш редюсер здесь
-  },
+  reducer: {},
 });
 
 export default store;
