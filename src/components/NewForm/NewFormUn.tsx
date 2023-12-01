@@ -82,23 +82,33 @@ function NewFormUn() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>Name</label>
       <input {...register('firstName')} onChange={handleInputChange} />
-      <p className={style.error}>{errors.firstName?.message}</p>
+      <div className={style.place__error}>
+        <p className={style.error}>{errors.firstName?.message}</p>
+      </div>
 
       <label htmlFor="age">Age</label>
       <input id="age" {...register('age')} onChange={handleInputChange} />
-      <p className={style.error}>{errors.age?.message}</p>
+      <div className={style.place__error}>
+        <p className={style.error}>{errors.age?.message}</p>
+      </div>
 
       <label>Email</label>
       <input {...register('email')} onChange={handleInputChange} />
-      <p className={style.error}>{errors.email?.message}</p>
+      <div className={style.place__error}>
+        <p className={style.error}>{errors.email?.message}</p>
+      </div>
 
       <label>Password</label>
       <input {...register('password')} onChange={handleInputChange} />
-      <p className={style.error}>{errors.password?.message}</p>
+      <div className={style.place__error}>
+        <p className={style.error}>{errors.password?.message}</p>
+      </div>
 
       <label>Confirm Password</label>
       <input {...register('confirmPassword')} onChange={handleInputChange} />
-      <p className={style.error}>{errors.confirmPassword?.message}</p>
+      <div className={style.place__error}>
+        <p className={style.error}>{errors.confirmPassword?.message}</p>
+      </div>
 
       <label>Gender</label>
       <select {...register('gender')}>
@@ -106,7 +116,9 @@ function NewFormUn() {
         <option value="male">male</option>
         <option value="female">female</option>
       </select>
-      <p className={style.error}>{errors.gender?.message}</p>
+      <div className={style.place__error}>
+        <p className={style.error}>{errors.gender?.message}</p>
+      </div>
 
       <label>Country</label>
       <select {...register('country')}>
@@ -117,7 +129,9 @@ function NewFormUn() {
           </option>
         ))}
       </select>
-      <p className={style.error}>{errors.country?.message}</p>
+      <div className={style.place__error}>
+        <p className={style.error}>{errors.country?.message}</p>
+      </div>
 
       <label htmlFor="picture">Upload Picture</label>
       <input
@@ -126,11 +140,15 @@ function NewFormUn() {
         accept=".png, .jpeg"
         {...register('picture')}
       />
-      <p className={style.error}>{errors.picture?.message}</p>
+      <div className={style.place__error}>
+        <p className={style.error}>{errors.picture?.message}</p>
+      </div>
 
       <label>Accept </label>
       <input type="checkbox" {...register('terms')} />
-      <p className={style.error}>{errors.terms?.message}</p>
+      <div className={style.place__error}>
+        <p className={style.error}>{errors.terms?.message}</p>
+      </div>
 
       <button type="submit">SUBMIT</button>
     </form>
