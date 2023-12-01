@@ -1,17 +1,16 @@
-// import FormNot from '../../components/FormNot/FormNot';
+import InputUn from '../../components/InputUn/InputUn';
 import LinkToHome from '../../components/LinkToHome/LinkToHome';
-import NewFormUn from '../../components/NewForm/NewFormUn';
-import style from './FormUN.module.css';
+import style from './FormUn.module.css';
 
 function FormUN() {
   return (
     <>
       <div className={style.container}>
         <div className={style.title}>
-          <h3 className={style.text}>FormUN</h3>
+          <h3 className={style.text}>Uncontrolled</h3>
         </div>
-        <div>
-          <NewFormUn />
+        <div className={style.wrapper}>
+          <InputUn />
         </div>
         <LinkToHome />
       </div>

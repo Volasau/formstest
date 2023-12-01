@@ -1,11 +1,11 @@
-export interface ICountryProp {
+export interface ICountry {
   Country: string;
   code: string;
 }
 
-export const countries: ICountryProp[] = [
+export const countries: ICountry[] = [
   { Country: 'Afghanistan', code: 'AF' },
-  { Country: 'land Islands', code: 'AX' },
+  { Country: 'Aland Islands', code: 'AX' },
   { Country: 'Albania', code: 'AL' },
   { Country: 'Algeria', code: 'DZ' },
   { Country: 'American Samoa', code: 'AS' },
