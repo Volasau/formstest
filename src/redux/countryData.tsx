@@ -1,4 +1,6 @@
-export const consaa = {
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
   countries: [
     'Afghanistan',
     'Aland Islands',
@@ -53,7 +55,7 @@ export const consaa = {
     'Congo, The Democratic Republic of the',
     'Cook Islands',
     'Costa Rica',
-    'Cote D"Ivoire',
+    "Cote D'Ivoire",
     'Croatia',
     'Cuba',
     'Cyprus',
@@ -115,11 +117,11 @@ export const consaa = {
     'Kazakhstan',
     'Kenya',
     'Kiribati',
-    'Korea, Democratic People"S Republic of',
+    "Korea, Democratic People'S Republic of",
     'Korea, Republic of',
     'Kuwait',
     'Kyrgyzstan',
-    'Lao People"S Democratic Republic',
+    "Lao People'S Democratic Republic",
     'Latvia',
     'Lebanon',
     'Lesotho',
@@ -146,7 +148,6 @@ export const consaa = {
     'Moldova, Republic of',
     'Monaco',
     'Mongolia',
-    'Montenegro',
     'Montserrat',
     'Morocco',
     'Mozambique',
@@ -193,7 +194,7 @@ export const consaa = {
     'Sao Tome and Principe',
     'Saudi Arabia',
     'Senegal',
-    'Serbia',
+    'Serbia and Montenegro',
     'Seychelles',
     'Sierra Leone',
     'Singapore',
@@ -246,3 +247,11 @@ export const consaa = {
     'Zimbabwe',
   ],
 };
+
+export const countriesSlice = createSlice({
+  name: 'countries',
+  initialState,
+  reducers: {},
+});
+
+export default countriesSlice.reducer;
