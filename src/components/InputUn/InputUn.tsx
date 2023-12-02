@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import style from './InputUn.module.css';
-import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 // import { useNavigate } from 'react-router-dom';
 
 function InputUn() {
@@ -28,9 +28,6 @@ function InputUn() {
     useRef<HTMLInputElement | null>(null),
     useRef<HTMLInputElement | null>(null),
   ];
-
-  const counries = useSelector((state: RootState) => state.countries.countries);
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const formData = {
       firstName: nameRef.current?.value || '',
@@ -48,6 +45,10 @@ function InputUn() {
     // navigate('/');
     event.preventDefault();
   };
+
+  const countries = useSelector(
+    (state: RootState) => state.countries.countries
+  );
 
   return (
     <>
@@ -130,7 +131,7 @@ function InputUn() {
             placeholder="Select Country"
           />
           <datalist id="country-list">
-            {counries.map((country, index) => (
+            {countries.map((country, index) => (
               <option key={index} value={country} />
             ))}
           </datalist>

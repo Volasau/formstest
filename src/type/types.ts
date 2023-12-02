@@ -1,9 +1,14 @@
 export type FormData = {
-  name: string;
+  firstName: string;
   age: number;
   email: string;
   password: string;
   gender: string;
-  image: string;
   country: string;
+  picture?: FileList | undefined;
 };
+
+export interface InfoData {
+  data: FormData;
+  newForm: boolean;
+}

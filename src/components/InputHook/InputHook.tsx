@@ -5,9 +5,23 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { schema, FormData } from '../../yup/yup';
+import { useDispatch } from 'react-redux';
+import { addForm, addNewForm } from '../../redux/formSlice';
+import { useEffect } from 'react';
+
+export const fileToBase64 = (file: File): Promise<string> => {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result?.toString() || '');
+    reader.onerror = (error) => reject(error);
+  });
+};
 
 function InputHook() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -17,8 +31,23 @@ function InputHook() {
     resolver: yupResolver(schema),
     mode: 'all',
   });
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
+    const { firstName, age, email, password, gender, /*picture,*/ country } =
+      data;
+    // const image64 = picture ? await fileToBase64(picture[0]) : '';
+
     console.log(data);
+    dispatch(
+      addForm({
+        firstName,
+        age,
+        email,
+        password,
+        gender,
+        // picture: image64,
+        country,
+      })
+    );
     navigate('/');
   };
 
@@ -50,6 +79,10 @@ function InputHook() {
       return '';
     }
   };
+
+  useEffect(() => {
+    dispatch(addNewForm(false));
+  }, [dispatch]);
 
   return (
     <div className={style.container}>
