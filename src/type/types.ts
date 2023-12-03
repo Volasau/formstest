@@ -24,7 +24,7 @@ export type File = {
   length: number;
 };
 
-export type Fields = {
+export type Inputes = {
   accept?: boolean;
   firstName: string;
   age: number;

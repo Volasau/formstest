@@ -7,7 +7,7 @@ import { RootState } from '../../redux/store';
 import { schema, FormDatas } from '../../yup/yup';
 import { useDispatch } from 'react-redux';
 import { addForm } from '../../redux/formSlice';
-import { Fields } from '../../type/types';
+import { Inputes } from '../../type/types';
 
 export const fileToBase64 = (file: File): Promise<string> => {
   return new Promise<string>((resolve, reject) => {
@@ -31,7 +31,7 @@ function InputHook() {
     resolver: yupResolver(schema),
     mode: 'all',
   });
-  const onSubmit = async (data: Fields) => {
+  const onSubmit = async (data: Inputes) => {
     const { firstName, age, email, password, gender, picture, country } = data;
     const image64 = picture ? await fileToBase64(picture[0]) : '';
 

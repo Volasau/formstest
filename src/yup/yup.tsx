@@ -67,4 +67,4 @@ export const schema = yup
   })
   .required();
 
-export type FormData = yup.InferType<typeof schema>;
+export type FormDatas = yup.InferType<typeof schema>;
