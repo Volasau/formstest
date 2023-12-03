@@ -4,10 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { schema, FormData } from '../../yup/yup';
+import { schema, FormDatas } from '../../yup/yup';
 import { useDispatch } from 'react-redux';
-import { addForm, addNewForm } from '../../redux/formSlice';
-import { useEffect } from 'react';
+import { addForm } from '../../redux/formSlice';
+import { Fields } from '../../type/types';
 
 export const fileToBase64 = (file: File): Promise<string> => {
   return new Promise<string>((resolve, reject) => {
@@ -27,14 +27,13 @@ function InputHook() {
     handleSubmit,
     formState: { errors, isValid },
     watch,
-  } = useForm<FormData>({
+  } = useForm<FormDatas>({
     resolver: yupResolver(schema),
     mode: 'all',
   });
-  const onSubmit = async (data: FormData) => {
-    const { firstName, age, email, password, gender, /*picture,*/ country } =
-      data;
-    // const image64 = picture ? await fileToBase64(picture[0]) : '';
+  const onSubmit = async (data: Fields) => {
+    const { firstName, age, email, password, gender, picture, country } = data;
+    const image64 = picture ? await fileToBase64(picture[0]) : '';
 
     console.log(data);
     dispatch(
@@ -44,7 +43,7 @@ function InputHook() {
         email,
         password,
         gender,
-        // picture: image64,
+        picture: image64,
         country,
       })
     );
@@ -79,10 +78,6 @@ function InputHook() {
       return '';
     }
   };
-
-  useEffect(() => {
-    dispatch(addNewForm(false));
-  }, [dispatch]);
 
   return (
     <div className={style.container}>

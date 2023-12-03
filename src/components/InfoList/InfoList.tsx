@@ -1,11 +1,12 @@
-import React from 'react';
 import { Info } from '../Info/Info';
 import style from './InfoList.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 
 function InfoList() {
-  const { formInfo, newForm } = useSelector((state: RootState) => state.form);
+  const { formInfo } = useSelector((state: RootState) => state.form);
+  const lastFormIndex = formInfo.length - 1;
+
   return (
     <>
       <div className={style.container}>
@@ -13,7 +14,7 @@ function InfoList() {
           <Info
             key={`tile-${index}`}
             data={tile}
-            newForm={newForm && index === 0 ? newForm : false}
+            className={index === lastFormIndex ? style.active : style.unactive}
           />
         ))}
       </div>

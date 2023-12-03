@@ -3,12 +3,10 @@ import { FormData } from '../type/types';
 
 interface State {
   formInfo: FormData[];
-  newForm: boolean;
 }
 
 const initialState: State = {
   formInfo: [],
-  newForm: false,
 };
 
 export const formSlice = createSlice({
@@ -16,10 +14,9 @@ export const formSlice = createSlice({
   initialState,
   reducers: {
     addForm(state, action) {
-      state.newForm = true;
       const { firstName, age, email, password, gender, picture, country } =
         action.payload;
-      state.formInfo.unshift({
+      state.formInfo.push({
         firstName,
         age,
         email,
@@ -29,11 +26,8 @@ export const formSlice = createSlice({
         picture,
       });
     },
-    addNewForm(state, action) {
-      state.newForm = action.payload;
-    },
   },
 });
 
-export const { addForm, addNewForm } = formSlice.actions;
+export const { addForm } = formSlice.actions;
 export default formSlice.reducer;

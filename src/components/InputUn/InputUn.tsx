@@ -2,10 +2,14 @@ import React, { useRef } from 'react';
 import style from './InputUn.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addForm } from '../../redux/formSlice';
+import { fileToBase64 } from '../InputHook/InputHook';
 
 function InputUn() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [
     nameRef,
@@ -28,7 +32,9 @@ function InputUn() {
     useRef<HTMLInputElement | null>(null),
     useRef<HTMLInputElement | null>(null),
   ];
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     const formData = {
       firstName: nameRef.current?.value || '',
       age: parseInt(ageRef.current?.value || '0', 10),
@@ -41,9 +47,25 @@ function InputUn() {
       terms: acceptRef.current?.checked || false,
     };
 
+    const image64 =
+      pictureRef.current && pictureRef.current.files
+        ? await fileToBase64(pictureRef.current.files[0])
+        : '';
+
     console.log(formData);
-    // navigate('/');
-    event.preventDefault();
+    dispatch(
+      addForm({
+        firstName: nameRef.current?.value || '',
+        age: parseInt(ageRef.current?.value || '0', 10),
+        email: emailRef.current?.value || '',
+        password: pasRef.current?.value || '',
+        confirmPassword: conpasRef.current?.value || '',
+        gender: genderRef.current?.value || '',
+        country: countryRef.current?.value || '',
+        picture: image64,
+      })
+    );
+    navigate('/');
   };
 
   const countries = useSelector(
