@@ -6,8 +6,8 @@ import FormUN from './pages/FormUn/FormUn';
 import './App.css';
 
 function App() {
-    console.log('test')
-  
+  console.log('test');
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
